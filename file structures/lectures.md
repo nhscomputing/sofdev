@@ -129,3 +129,82 @@ Hint:
 2. you may need to use the native for loops instead of for...of and think about why? 
 
 
+# XML
+
+## Opener
+Suppose your fellow colleauges ask you for help with the following two tasks:
+1. [parsing XML data from open weather map](https://community.particle.io/t/parsing-xml-data-from-openweather-map/22047).
+1. [how to create a product feed in XML](https://community.shopify.com/c/Shopify-Discussion/How-to-create-Custom-Product-XML/td-p/366075) 
+
+The two scenarios above are common applications of XML. As a software developer, you are very likely to write software modules to create, retrieve, extract data from XML files.
+For more details on product feed, check out this [article](https://api2cart.com/ecommerce/product-feeds-work-e-commerce/)
+
+### What is XML?
+XML is a software- and hardware-independent tool for storing and transporting data.
+* XML stands for eXtensible Markup Language
+* XML is a markup language much like HTML
+* XML was designed to store and transport data
+* XML was designed to be self-descriptive
+
+Go to this link to look at a [sample XML](https://codebeautify.org/xmlviewer#)
+
+#### XML vs HTML
+* XML was designed to carry data - with focus on what data is
+* HTML was designed to display data - with focus on how data looks
+* XML tags are not predefined like HTML tags are
+
+### XML vs CSV
+Most XML applications will work as expected even if new data is added (or removed). However, this won't apply to CSV. On Friday, we will write a module to make comparison between them.
+
+### Jargons
+Elements, tags, node
+* An element consists of an opening tag, its attributes, any content, and a closing tag.
+* A tag – either opening or closing – is used to mark the start or end of an element.
+* A node is a part of the hierarchical structure that makes up an XML document. “Node” is a generic term that applies to any type of XML document object, including elements, attributes, comments, processing instructions, and plain text.
+
+### Request XML data from server
+All modern browsers have a built-in XMLHttpRequest object to request data from a server.
+
+It allows developers to:
+* Update a web page without reloading the page
+* Request data from a server - after the page has loaded
+* Receive data from a server  - after the page has loaded
+* Send data to a server - in the background
+
+### Try it yourself - request XML data (Bronze)
+```javascript
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       console.log(this.responseXML);// this refers to the XMLHttpRequest object you just created. The data is stored in its responseXML property. You should define your own callback function here to manipulate the data retrieved from the server.
+    }
+};
+xhttp.open("GET", "sample.xml", true);
+xhttp.send();
+```
+The code is explained perfectly in [W3School tutorials](https://www.w3schools.com/xml/xml_http.asp)
+
+Your next job is to extract value from the XML document. 
+To prepare you for this, you can open the sample XML file in the browser. Open your console window and type the following command to observe the results
+
+There are various ways to access the value of one element.
+```javascript
+document.getElementsByTagName('CD')
+document.getElementsByTagName('CD')[0]
+document.getElementsByTagName('TITLE')
+document.getElementsByTagName('TITLE')[0]
+document.getElementsByTagName('TITLE')[0].innerhtml
+document.getElementsByTagName('TITLE')[0].firstChild
+document.getElementsByTagName('TITLE')[0].childNodes[0].nodeValue
+```
+When you feel confident accessing the values of all elements, you can have some real fun playing with the data.
+### Silver challenge -- display the XML data in a table
+
+Should you have any issue, you can refer to the file named display_xml.html
+
+### Gold challenge -- retrieve and display data from open weather API
+
+Resources:
+* [More challenges on W3School](https://www.w3schools.com/xml/ajax_applications.asp)
+* [open weather API](https://openweathermap.org/api)
