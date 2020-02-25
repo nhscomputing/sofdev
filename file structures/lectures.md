@@ -205,6 +205,6 @@ Should you have any issue, you can refer to the file named display_xml.html
 
 ### Gold challenge -- retrieve and display data from open weather API
 
-Resources:
+### Resources:
 * [More challenges on W3School](https://www.w3schools.com/xml/ajax_applications.asp)
 * [open weather API](https://openweathermap.org/api)
