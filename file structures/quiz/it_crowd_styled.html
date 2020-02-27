@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>If You Get 100% On This IT Crowd Quiz, You're A Real Nerd</h1>
+        <div class="text-center">
+            <img src="img/moss.jpg" alt="fire!">
+          
+       
+        </div>
+        <div class="text-center ">
+            <input class='btn btn-dark' type="file" name="" id="fileUpload">
+        <button class='btn btn-dark' onclick="loadXml();">Load the quiz XML</button>
+        
+            </div>
+        
+            <div id="quiz" ></div>
+                <button id="submit" class='invisible'>Submit Quiz</button>
+                <div id="results"></div>
+            </div>
+        
+        
+        
+    </div>
+    
+    <script>
+        const quizContainer = document.getElementById('quiz');
+        const resultsContainer = document.getElementById('results');
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click',showResult);
+        var arrQuiz = [];
+
+        function loadXml(){
+           
+            var fileUpload = document.getElementById('fileUpload');
+            var reader = new FileReader();
+            reader.readAsText(fileUpload.files[0]);
+            reader.onload = function(){
+                var text = this.result;
+                var parser = new DOMParser();
+                var xml = parser.parseFromString(text, 'text/xml');
+                var x = xml.getElementsByTagName('quiz');
+                
+                for(let q of x){
+                    let qQuestion = q.getElementsByTagName('question')[0].childNodes[0].nodeValue;
+                    let options = q.getElementsByTagName('option');
+                    let arrOptions = [];
+                    for(let option of options){
+                        arrOptions.push(option.childNodes[0].nodeValue);
+                    }
+                    let answer = q.getElementsByTagName('answer')[0].childNodes[0].nodeValue;
+                var quiz ={question:qQuestion,
+                answers:{a: arrOptions[0],b:arrOptions[1],c:arrOptions[2],d:arrOptions[3]},
+                correctAnswer:answer};
+                arrQuiz.push(quiz);
+               
+                };
+                buildQuiz(arrQuiz);
+                console.log(arrQuiz.length);
+
+
+                }
+                
+              
+
+                }
+
+               
+        
+
+         function buildQuiz(quizzes){
+             
+            const output = [];
+            const myQuestions = quizzes;
+            submitButton.classList.remove('invisible');
+         
+
+// for each question...
+                myQuestions.forEach(
+                        (currentQuestion, questionNumber) => {
+
+    // variable to store the list of possible answers
+                     const answers = [];
+
+                // and for each available answer...
+                for(letter in currentQuestion.answers){
+                    
+                // ...add an HTML radio button
+                answers.push(
+                    `<label>
+                    <input type="radio" name="question${questionNumber}" value="${letter}">
+                    ${letter} :
+                    ${currentQuestion.answers[letter]}
+                    </label>`
+                );
+                }
+                
+
+                // add this question and its answers to the output
+                output.push(
+                `<div class="question"> ${currentQuestion.question} </div>
+                <div class="answers"> ${answers.join('')} </div>`
+                );
+            
+            }
+            );
+
+            // finally combine our output list into one string of HTML and put it on the page
+            quizContainer.innerHTML = output.join('');
+}
+
+         
+
+         function showResult(){
+            const myQuestions = arrQuiz;
+            console.log(myQuestions);
+
+                 // gather answer containers from our quiz
+    const answerContainers = quizContainer.querySelectorAll('.answers');
+
+// keep track of user's answers
+let numCorrect = 0;
+
+// for each question...
+myQuestions.forEach( (currentQuestion, questionNumber) => {
+
+  // find selected answer
+  const answerContainer = answerContainers[questionNumber];
+  const selector = `input[name=question${questionNumber}]:checked`;
+  const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+  // if answer is correct
+  if(userAnswer === currentQuestion.correctAnswer){
+    // add to the number of correct answers
+    numCorrect++;
+
+    // color the answers green
+    answerContainers[questionNumber].style.color = 'lightgreen';
+  }
+  // if answer is wrong or blank
+  else{
+    // color the answers red
+    answerContainers[questionNumber].style.color = 'red';
+  }
+});
+
+// show number of correct answers out of total
+resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+
+         }
+         
+
+    </script>
+    
+</body>
+</html>

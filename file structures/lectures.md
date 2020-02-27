@@ -208,3 +208,23 @@ Should you have any issue, you can refer to the file named display_xml.html
 ### Resources:
 * [More challenges on W3School](https://www.w3schools.com/xml/ajax_applications.asp)
 * [open weather API](https://openweathermap.org/api)
+
+## Let's make a JavaScript quiz!
+Coding your own JavaScript quiz is a fantastic learning exercise. It teaches you how to deal with events, manipulate the DOM, handle user input, give feedback to the user and keep track of their score. And when you have a basic quiz up and running, there are a whole bunch of possibilities to add more advanced functionality, such as pagination.
+
+You need the following knowledge and skills to complete this challenge:
+* read a user-uploaded XML using File API. The file content is usually stored as text once the file is loaded to memory.
+* parse the text as a XML DOM object before you can extract info from it. (See example here)[https://www.w3schools.com/xml/xml_parser.asp]
+* manipulate XML DOM object to extract useful data. (See example here)[https://github.com/nhscomputing/sofdev/blob/master/file%20structures/display_xml.html]
+* store data using objects and array of objects. In this case, the appropriate data structure to store the info of one quiz is object as it allows flexible data structures. Then push all the quiz objects into an array. Use the following syntax to create an object:
+```javascript
+object={property1:value1,property2:value2.....propertyN:valueN}  
+tvShow = {name:'IT Crowd', Country: 'UK', seasons: '4',showDate:2002-1-1}
+//iterate over all properties of the object tvShow
+for (const key in tvShow){
+  console.log(`${key}: ${tvShow[key]}`);
+}
+```
+* generate quiz html output automatically using loops and javascript (template literals)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals]. Efficient developers use this!
+
+

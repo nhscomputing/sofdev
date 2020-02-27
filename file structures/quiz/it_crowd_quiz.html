@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>If You Get 100% On This IT Crowd Quiz, You're A Real Nerd</h1>
+    <img src="img/moss.jpg" alt="fire!">
+    <input type="file" name="" id="fileUpload">
+    <button onclick="loadXml();">Load the quiz XML</button>
+    <div id="quiz"></div>
+    <button id="submit">Submit Quiz</button>
+    <div id="results"></div>
+    <script>
+        const quizContainer = document.getElementById('quiz');
+        const resultsContainer = document.getElementById('results');
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click',showResult);
+        var arrQuiz = [];
+
+        function loadXml(){
+           
+            var fileUpload = document.getElementById('fileUpload');
+            var reader = new FileReader();
+            reader.readAsText(fileUpload.files[0]);
+            reader.onload = function(){
+                var text = this.result;
+                var parser = new DOMParser();
+                var xml = parser.parseFromString(text, 'text/xml');
+                var x = xml.getElementsByTagName('quiz');
+                
+                for(let q of x){
+                    let qzQuestion = q.getElementsByTagName('question')[0].childNodes[0].nodeValue;
+                    let options = q.getElementsByTagName('option');
+                    let arrOptions = [];
+                    for(let option of options){
+                        arrOptions.push(option.childNodes[0].nodeValue);
+                    }
+                    let answer = q.getElementsByTagName('answer')[0].childNodes[0].nodeValue;
+                    var quiz ={question:qzQuestion,
+                    answers:{a: arrOptions[0],b:arrOptions[1],c:arrOptions[2],d:arrOptions[3]},
+                    correctAnswer:answer};
+                    arrQuiz.push(quiz);
+                };
+                
+                buildQuiz(arrQuiz);
+            }
+        }
+      
+        function buildQuiz(quizzes){
+             
+            const output = [];
+            const myQuestions = quizzes;
+
+            for (let i=0; i<myQuestions.length;i++){
+                const answers = [];
+                for(let letter in myQuestions[i].answers){
+                    answers.push(
+                            `<label>
+                            <input type="radio" name="question${i}" value="${letter}">
+                            ${letter} :
+                            ${myQuestions[i].answers[letter]}
+                            </label>`);
+                }
+                output.push(
+                `<div class="question"> ${myQuestions[i].question} </div>
+                <div class="answers"> ${answers.join('')} </div>`
+                );
+            }
+      
+            quizContainer.innerHTML = output.join('');
+}
+
+         function showResult(){
+            const myQuestions = arrQuiz;
+            const answerContainers = quizContainer.querySelectorAll('.answers');
+            let numCorrect = 0;
+            for(let i=0; i<myQuestions.length; i++){
+                const answerContainer = answerContainers[i];
+                const selector = `input[name=question${i}]:checked`;
+                const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+                if(userAnswer === myQuestions[i].correctAnswer){
+                    numCorrect++;
+                    answerContainers[i].style.color = 'lightgreen';}
+                else{
+                    answerContainers[i].style.color = 'red';}
+            }
+
+            resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+        }
+    </script>
+    
+</body>
+</html>

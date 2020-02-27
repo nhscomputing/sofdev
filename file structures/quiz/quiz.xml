@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quizzes>
+    <quiz>
+        <question>What game show does Moss go on?</question>
+        <option>Tipping Point</option>
+        <option>Who wants to Be a Millionaire?</option>
+        <option>Countdown</option>
+        <option>The Chase</option>
+        <answer>c</answer>
+    </quiz>
+    <quiz>
+        <question>How did Roy's orphaned girlfriend's parents die?</question>
+        <option>Drowned in a swimming pool</option>
+        <option>Fire at a SeaPark</option>
+        <option>Shot on the River Nile</option>
+        <option>Fire on a mountain</option>
+        <answer>b</answer>
+    </quiz>
+    <quiz>
+        <question>Jen broke up with someone because he looked like what type of children's entertainer?</question>
+        <option>A clown</option>
+        <option>A ventriloquist</option>
+        <option>A magician</option>
+        <option>A DJ</option>
+        <answer>c</answer>
+    </quiz>
+    <quiz>
+        <question>What language does Jen claim she can speak?</question>
+        <option>Spanish</option>
+        <option>French</option>
+        <option>Russion</option>
+        <option>Italian</option>
+        <answer>d</answer>
+    </quiz>
+    <quiz>
+        <question>What is the IT Crowd-verse’s version of Facebook?</question>
+        <option>Bookface</option>
+        <option>Friendbook</option>
+        <option>Friendface</option>
+        <option>Peoplebook</option>
+        <answer>c</answer>
+    </quiz>
+    <quiz>
+        <question>Complete the Roy quote: “The last time I exercised was...”</question>
+        <option>...twenty years ago</option>
+        <option>...in PE class</option>
+        <option>...never</option>
+        <option>...when I was a child</option>
+        <answer>c</answer>
+    </quiz>
+</quizzes>
