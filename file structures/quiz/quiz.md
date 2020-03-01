@@ -1,8 +1,8 @@
 # hints and tips 
-When I first learned to build a project, I always strugged with getting started. From my past experiences, I realised you can always start with user input data. You can ask yourself the following questions:
-* how can user enter the data? In this case, you use select a file and upload to your quiz app.
+When I first learned to build a project, I always struggled with getting started. From my past experiences, I realised you can always start with the user input data. You can ask yourself the following questions:
+* how can users enter the data? In this case, you let users select a file and upload to your quiz app.
 * what do I do after I get the raw data? We convert the data from text to XML DOM object
-* is the raw data ready to be used? If not, what data structure should I use to store the data? We will extract the info from XML object and use object to represent the quiz and array to represent the list of quizzes.
+* is the raw data ready to be used? If not, what data structure should I use to store the data? We will extract the info from XML DOM object and use object to represent the quiz and array to represent the list of quizzes.
 * what output it should look like? You can write down the html template for the output and replace the actual content with the variables. This is called templating in real-world programming.
 ## 1. how to read the content of files stored on user's computer?
 1. create an input element of the type 'file' to let user select files from their computer. And a button to upload the selected file to your app.
