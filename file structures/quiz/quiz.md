@@ -264,3 +264,7 @@ document.getElementById('quiz').innerHTML = output.join();
 
 ```
 So far you are almost done with the project. It's your turn to figure out how to get user's choice and check the result. Hope you've learned heaps from this project!
+```javascript
+ var name = 'abc'
+
+```
