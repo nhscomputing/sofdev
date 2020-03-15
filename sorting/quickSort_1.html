@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function quickSort(arr, start, end){
+            if(start >= end){
+                return;
+            }
+            let index = partition(arr, start, end);
+            quickSort(arr,start,index - 1);
+            quickSort(arr, index + 1, end);
+            return arr;
+        }
+
+        function partition(arr, start, end){
+            let pivotValue = arr[end];
+            let pivotIndex = start;
+            for (let i = start; i < end; i++ ){
+                if(arr[i] < pivotValue){
+                    swap(arr, i, pivotIndex);
+                    pivotIndex++;
+                }
+            }
+            swap(arr, pivotIndex, end);
+            return pivotIndex;
+        }
+
+        function swap(arr, a, b){
+            let temp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
+        }
+        let a = [1,4,5,7,8,-2,50,39,1,20,55,12,45];
+        
+        console.log(quickSort(a,0,12));
+    </script>
+</body>
+</html>
