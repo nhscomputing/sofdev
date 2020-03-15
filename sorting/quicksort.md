@@ -146,6 +146,8 @@ You can challenge yourself to visualisa the quicksort by finishing watching the 
 ### Quicksort dance
 Please watch this funny quicksort dance. It is the most nerdiest thing I've ever seen.
 [Click here](https://youtu.be/ywWBy6J5gz8)
+### Another algorithm
+[check out this video](https://youtu.be/Fiot5yuwPAg)
 ### Explain recursion to a 6yo kid
 A saying goes you never fully understand something if you can't explain it to a six year old.
 Think about how you will explain recursion to your younger siblings or cousins.
