@@ -6,7 +6,7 @@ However it's not party time. Please make full use of the class time to study the
 
 I put the agenda for you to better organise your time:
 1. (5min) play the number guessing game with a partner or in a small group. Discuss your strategies with your partners. 
-2. (15min) study binary search: read the definition below. If it doesn't make sense to you. Find yourself a youtube video.
+2. (15min) study binary search: watch the video and read the notes. If it still doesn't make sense to you. Find yourself a better youtube video.
 3. (20min) Implement it in JS. Once you understand how the algorithm works, follow my tutorial below to code binary search. Make sure you test your code before moving on. **Check my code in the bisearch.html should you get stuck**.
 4. (15min)Tweak binary search to sort an array with duplicated elements. This is a very important task! You will need it in your module 3.
 Best luck with learning search.
