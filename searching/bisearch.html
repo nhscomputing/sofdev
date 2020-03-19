@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+
+    <script>
+        function binarySearch(arr,target){
+            let startIndex = 0;
+            let endIndex = arr.length;
+            while(startIndex <= endIndex){
+                let midIndex = Math.floor((startIndex + endIndex) / 2);
+                if(target == arr[midIndex]){
+                    return true;
+                }
+                else if(target > arr[midIndex]){
+                    startIndex = midIndex + 1;
+                }
+                else {
+                    endIndex = midIndex - 1;
+                }
+            }
+            return false;
+        
+        }
+
+
+        function biSearchDup(arr,target){
+                let startIndex = 0;
+                let endIndex = arr.length - 1;
+                let result = [];// result[0] stores the left bound the found target and result[1] is for the right bound of the found target
+                
+                while(startIndex <= endIndex){
+                    
+                    let midIndex = Math.floor((startIndex + endIndex) / 2);
+                    if(target == arr[midIndex]){
+                        let left = midIndex - 1;
+                        let right = midIndex + 1;
+                        while(arr[left] == target){
+                            left--;
+                        }
+                        
+                        while(arr[right]==target){
+                            right++;
+                        }
+                        result.push(left+1);
+                        result.push(right-1);
+                        return result;
+                    }
+                    else if(target > arr[midIndex]){
+                        startIndex = midIndex + 1;
+                    }
+                    else {
+                        endIndex = midIndex -1;
+                    }
+                }
+                return false;
+        }   
+let arr = [1, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59];
+let tstarr1 = [7, 3,60, 1, 11, 13, 59, 19, 41, 29, 31, 21, 23, 43, 37, 53, 17];
+let tst = [1,1,1,3,3,3,3,5,5,8,9,9,9,9,9,14,15,16,16,16]
+console.log(binarySearch(arr,3));
+console.log(biSearchDup(tst,3));
+    </script>
+</body>
+</html>
