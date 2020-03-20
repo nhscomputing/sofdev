@@ -1,9 +1,3 @@
-Hi Team, I guess you probably feel like this now when you find out Ms Sun won't be at school today. I will be back on Monday.
-
-![happy](https://media2.giphy.com/media/TXJiSN8vCERuE/giphy.gif)
-
-However it's not party time. Please make full use of the class time to study the search algorithm.
-
 I put the agenda for you to better organise your time:
 1. (5min) play the number guessing game with a partner or in a small group. Discuss your strategies with your partners. 
 2. (15min) study binary search: watch the video and read the notes. If it still doesn't make sense to you. Find yourself a better youtube video.
