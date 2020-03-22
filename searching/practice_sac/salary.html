@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id='empid' placeholder="employee ID">
+    <input type="text" id='firstname' placeholder="First Name">
+    <input type="text" id='lastname' placeholder="Last Name">
+    <select id="date">
+        <option value="01">Jan</option>
+        <option value="02">Feb</option>
+        <option value="03">Mar</option>
+        <option value="04">Apr</option>
+        <option value="05">May</option>
+        <option value="06">Jun</option>
+        <option value="07">Jul</option>
+        <option value="08">Aug</option>
+        <option value="09">Sept</option>
+        <option value="10">Oct</option>
+        <option value="11">Nov</option>
+        <option value="12">Dec</option>
+    </select>
+    <input type="file"  id="fileUpload">
+    <button onclick="readCSV()">Show salary</button>
+    <table id='salaryTbl'>
+        
+    </table>
+    <script>
+        
+        function readCSV(){
+            const fileUpload = document.querySelector('input[type=file]');
+            let records = [];
+            let reader = new FileReader();
+            reader.readAsText(fileUpload.files[0]);
+            reader.onload = function (){
+                const text = reader.result;
+                let rows = text.split('\n');
+                let header = rows[0].split(',');
+               
+                for(let i = 1; i < rows.length; i++){
+                    let row = rows[i].split(',');
+                    let obj = {};
+                    for (let j = 0; j < row.length; j++){
+                        obj[header[j].trim().toLowerCase()] = row[j].trim().toLowerCase();
+                    }
+                    records.push(obj);
+                }
+                //console.log(records);
+                //console.log(filterBy(records,'firstname','zac'));
+               showSal(search(records));
+                
+
+
+                }
+                
+                
+        }
+
+        function search(arr){
+            const inputs = document.querySelectorAll('input[type=text]');
+            const month = document.querySelector('select');
+            
+            let result = arr;
+            for(input of inputs){
+                if(input.value != ''){
+                    let key = input.id;
+                    let value = input.value;
+                    result = filterBy(result,key,value);
+                }
+            }
+            if(month.value != ''){
+                result = filterBy(result,month.id,month.value);
+            }
+            
+            return result;
+        }
+        
+
+        function filterBy(arr,key,value){
+            let result = [];
+            
+            for(let i of arr){
+               if(key == 'date'){
+                   
+                   let date = i[key].split('/');
+                    if(date[1] == value){
+                        result.push(i);
+                    }
+               }
+               
+               else if(i[key] == value.toLowerCase()){
+                   result.push(i);
+               }
+            
+            } 
+            return result;
+        }
+
+        function showSal(arr){
+            let total = 0;
+            let output = '<th>Name</th><th>Date</th><th>Hours Worked</th>';
+            for(i of arr){
+
+                total += parseInt(i['hours'])*45;
+              output += `<tr><td>${i['firstname']} ${i['lastname']}</td><td>${i['date']}</td><td>${i['hours']}</td></tr>`
+
+            }
+            output += `<tr><td>Total Salary: ${total}</td></tr>`;
+            //console.log(output);
+           document.getElementById('salaryTbl').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
