@@ -24,5 +24,5 @@ The interface will look like the screenshot below:
 * loop through the result array to append each row in the table
 
 Resources:
-[find an object in an array based on the object's property](https://www.linkedin.com/pulse/javascript-find-object-array-based-objects-property-rafael)
-[convert a csv file into JS objects](https://stackoverflow.com/questions/28543821/convert-csv-lines-into-javascript-objects)
+* [find an object in an array based on the object's property](https://www.linkedin.com/pulse/javascript-find-object-array-based-objects-property-rafael)
+* [convert a csv file into JS objects](https://stackoverflow.com/questions/28543821/convert-csv-lines-into-javascript-objects)
